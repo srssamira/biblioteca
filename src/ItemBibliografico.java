@@ -1,10 +1,12 @@
 import java.time.LocalDateTime;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 
 public class ItemBibliografico {
     private String codigo;
     private String titulo;
-    private String anoPublicacao;
+    private int anoPublicacao;
 
     public String getCodigo() {
         return codigo;
@@ -22,12 +24,25 @@ public class ItemBibliografico {
         this.titulo = titulo;
     }
 
-    public String getAnoPublicacao() {
+    public int getAnoPublicacao() {
         return anoPublicacao;
     }
 
-    public void setAnoPublicacao(String anoPublicacao) {
+    public void setAnoPublicacao(int anoPublicacao) {
         this.anoPublicacao = anoPublicacao;
     }
 
+    public boolean validarCampos(){
+        Calendar calendario = GregorianCalendar.getInstance();
+        int anoAtual = calendario.get(Calendar.YEAR);
+
+        if (codigo == null || titulo == null) {
+            throw new RuntimeException("Códigos e títulos não podem possuir valores nulos");
+        }
+
+        if (anoPublicacao < 1000 && anoPublicacao < anoAtual) {
+            throw new RuntimeException("Ano de publicação inválido");
+        }
+        return true;
+    }
 }
