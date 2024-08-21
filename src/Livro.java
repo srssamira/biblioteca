@@ -2,6 +2,12 @@ public class Livro extends ItemBibliografico {
     String autor;
     String isbn;
 
+    public Livro (String codigo, String titulo, int anoPublicacao, String autor, String isbn){
+        super(codigo, titulo, anoPublicacao);
+        this.autor = autor;
+        this.isbn = isbn;
+    }
+
     public String getAutor() {
         return autor;
     }

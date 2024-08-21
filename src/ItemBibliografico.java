@@ -3,10 +3,25 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
-public class ItemBibliografico {
+public abstract class ItemBibliografico {
     private String codigo;
     private String titulo;
     private int anoPublicacao;
+
+    @Override
+    public String toString() {
+        return "ItemBibliografico {" +
+                "codigo='" + codigo + '\'' +
+                ", titulo='" + titulo + '\'' +
+                ", anoPublicacao=" + anoPublicacao +
+                '}';
+    }
+
+    public ItemBibliografico(String codigo, String titulo, int anoPublicacao) {
+        this.codigo = codigo;
+        this.titulo = titulo;
+        this.anoPublicacao = anoPublicacao;
+    }
 
     public String getCodigo() {
         return codigo;
@@ -40,7 +55,7 @@ public class ItemBibliografico {
             throw new RuntimeException("Códigos e títulos não podem possuir valores nulos");
         }
 
-        if (anoPublicacao < 1000 && anoPublicacao < anoAtual) {
+        if (anoPublicacao < 1000 && anoPublicacao > anoAtual) {
             throw new RuntimeException("Ano de publicação inválido");
         }
         return true;
