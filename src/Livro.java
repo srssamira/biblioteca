@@ -1,8 +1,10 @@
+import java.time.Period;
+
 public class Livro extends ItemBibliografico {
     String autor;
     String isbn;
 
-    public Livro (String codigo, String titulo, String anoPublicacao, String autor, String isbn){
+    public Livro (String codigo, String titulo, int anoPublicacao, String autor, String isbn){
         super(codigo, titulo, anoPublicacao);
         this.autor = autor;
         this.isbn = isbn;
@@ -30,7 +32,7 @@ public class Livro extends ItemBibliografico {
             throw new RuntimeException("Autor não pode estar vazio");
         }
 
-        if (isbn.length() != 10 || isbn.length() != 13){
+        if (isbn.length() != 10 && isbn.length() != 13){
             throw new RuntimeException("ISBN deve ter ou 10 ou 13 caracteres");
         }
         return true;

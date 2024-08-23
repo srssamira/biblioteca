@@ -1,4 +1,5 @@
 import java.time.LocalDateTime;
+import java.time.Period;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -10,11 +11,11 @@ public abstract class ItemBibliografico {
 
     @Override
     public String toString() {
-        return "ItemBibliografico {" +
-                "codigo='" + codigo + '\'' +
-                ", titulo='" + titulo + '\'' +
-                ", anoPublicacao=" + anoPublicacao +
-                '}';
+        return "Item Bibliográfico {" +
+                "\nCodigo = " + codigo +
+                "\nTitulo = " + titulo +
+                "\nAno de publicação: " + anoPublicacao +
+                "\n}";
     }
 
     public ItemBibliografico(String codigo, String titulo, int anoPublicacao) {

@@ -1,19 +1,22 @@
+import java.time.Period;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Biblioteca {
     List<ItemBibliografico> itens;
-    Livro livro;
-    Periodico periodico;
+    IO io;
 
     public Biblioteca(List<ItemBibliografico> itens) {
-        this.itens = new ArrayList<>();
+        this.itens = itens;
     }
 
-    public void adicionarItem(List<ItemBibliografico> itens) {
-        if (livro.validarCampos() && periodico.validarCampos()) {
-            itens.add(livro);
-            itens.add(periodico);
+    public void adicionarItem(ItemBibliografico item) {
+        try {
+            if (item.validarCampos()) {
+                itens.add(item);
+            }
+        } catch (Exception e) {
+            System.out.println("Não foi possível adicionar o item.");
         }
     }
 
@@ -22,15 +25,15 @@ public class Biblioteca {
     }
 
     public ItemBibliografico buscarPorCodigo(String codigo) {
-
         try {
             for (int index = 0; index < itens.size(); index++) {
                 if (itens.get(index).getCodigo().equalsIgnoreCase(codigo)) {
+                    System.out.println(itens.get(index));
                     return itens.get(index);
                 }
             }
         } catch (Exception e) {
-            System.out.println("Esse item não existe.");
+            System.out.println("Item inexistente.");
         }
         return null;
     }
