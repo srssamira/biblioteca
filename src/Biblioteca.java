@@ -10,7 +10,7 @@ public class Biblioteca {
         this.itens = new ArrayList<>();
     }
 
-    public void adicionarItem(ItemBibliografico item) {
+    public void adicionarItem(List<ItemBibliografico> itens) {
         if (livro.validarCampos() && periodico.validarCampos()) {
             itens.add(livro);
             itens.add(periodico);
@@ -21,12 +21,18 @@ public class Biblioteca {
         System.out.println(itens);
     }
 
-    public String buscarPorCodigo(String codigo) {
-        for (codigo : livro.getCodigo()) {
-            if (codigo.equalsIgnoreCase(livro.getCodigo())) {
-                return codigo;
+    public ItemBibliografico buscarPorCodigo(String codigo) {
+
+        try {
+            for (int index = 0; index < itens.size(); index++) {
+                if (itens.get(index).getCodigo().equalsIgnoreCase(codigo)) {
+                    return itens.get(index);
+                }
             }
+        } catch (Exception e) {
+            System.out.println("Esse item não existe.");
         }
-        return "Esse livro não existe";
+        return null;
     }
+
 }

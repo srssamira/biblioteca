@@ -55,7 +55,7 @@ public abstract class ItemBibliografico {
             throw new RuntimeException("Códigos e títulos não podem possuir valores nulos");
         }
 
-        if (anoPublicacao < 1000 && anoPublicacao > anoAtual) {
+        if (anoPublicacao < 1000 || anoPublicacao > anoAtual) {
             throw new RuntimeException("Ano de publicação inválido");
         }
         return true;

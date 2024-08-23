@@ -32,7 +32,6 @@ public class Periodico extends ItemBibliografico {
         if (volume <= 0){
             throw new RuntimeException("O volume não pode ser menor ou igual a 0.");
         }
-
         return true;
     }
 }
